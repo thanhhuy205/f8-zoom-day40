@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Redux Counter</h1>
+    <p id="value">0</p>
+    <button id="inc">Increase</button>
+    <button id="dec">Decrease</button>
+    <button id="reset">Reset</button>
+    <button id="remove">Remove Listener</button>
+  </body>
+  <script src="./redux.js"></script>
+  <script>
+    function counterReducer(state = { count: 0 }, action) {
+      switch (action.type) {
+        case "INCREMENT":
+          return { count: state.count + 1 };
+        case "DECREMENT":
+          return { count: state.count - 1 };
+        case "RESET":
+          return { count: 0 };
+        default:
+          return state;
+      }
+    }
+
+    const store = createStore(counterReducer);
+
+    const valueEl = document.getElementById("value");
+    const render = () => {
+      valueEl.textContent = store.getState().count;
+      console.log(store.getState().count);
+    };
+    let unsubscribe = store.subscribe(render);
+    render();
+
+    document.getElementById("inc").onclick = () =>
+      store.dispatch({ type: "INCREMENT" });
+
+    document.getElementById("dec").onclick = () =>
+      store.dispatch({ type: "DECREMENT" });
+
+    document.getElementById("reset").onclick = () =>
+      store.dispatch({ type: "RESET" });
+
+    document.getElementById("remove").onclick = () => {
+      unsubscribe();
+    };
+  </script>
+</html>
