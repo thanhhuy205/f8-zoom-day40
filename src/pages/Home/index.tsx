@@ -12,7 +12,7 @@ const Home = () => {
           Xem Tasks
         </Link>
         <a
-          href="/redux.html"
+          href="/public/redux.html"
           target="_blank"
           rel="noopener noreferrer"
           className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition"
