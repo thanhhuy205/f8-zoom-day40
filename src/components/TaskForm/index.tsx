@@ -51,7 +51,7 @@ const TaskForm = ({
 
         <button
           type="button"
-          onClick={() => navigate("/", { replace: true })}
+          onClick={() => navigate("/task", { replace: true })}
           className="btn-secondary"
         >
           Cancel

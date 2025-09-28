@@ -1,18 +1,30 @@
+import TaskLayout from "@/layouts/TaskLayout";
 import EditTask from "@/pages/EditTask";
+import Home from "@/pages/Home";
 import NewTasks from "@/pages/NewTask";
 import TaskList from "@/pages/TaskList";
 
 export const config = [
   {
     path: "/",
-    element: <TaskList />,
+    element: <Home />,
   },
   {
-    path: "/:id/edit",
-    element: <EditTask />,
-  },
-  {
-    path: "/new-task",
-    element: <NewTasks />,
+    path: "/task",
+    element: <TaskLayout />,
+    children: [
+      {
+        index: true,
+        element: <TaskList />,
+      },
+      {
+        path: "new-task",
+        element: <NewTasks />,
+      },
+      {
+        path: ":id/edit",
+        element: <EditTask />,
+      },
+    ],
   },
 ];

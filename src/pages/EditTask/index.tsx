@@ -27,7 +27,7 @@ const EditTask = () => {
     if (success) {
       setErr(false);
       dispatch(updateTask(data));
-      navigate("/", { replace: true });
+      navigate("/task", { replace: true });
     } else {
       setErr(true);
     }
@@ -35,7 +35,7 @@ const EditTask = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) {
-    navigate("/", { replace: true });
+    navigate("/task", { replace: true });
   }
   if (!data) return <div>Task found</div>;
   return (

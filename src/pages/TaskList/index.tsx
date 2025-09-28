@@ -52,16 +52,26 @@ const TaskList = () => {
   };
 
   const handleEdit = (task: Task) => {
-    navigate(`/${task.id}/edit`);
+    navigate(`/task/${task.id}/edit`);
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (tasks.length === 0) return <div>Chưa có task nào</div>;
+  if (loading)
+    return (
+      <>
+        <div>Loading...</div>
+      </>
+    );
+  if (tasks.length === 0)
+    return (
+      <div className="flex items-center justify-center h-40 text-gray-500 text-lg font-medium border-2 border-dashed border-gray-300 rounded-lg">
+        Chưa có task nào
+      </div>
+    );
 
   return (
     <div className="card">
       <button
-        onClick={() => navigate("/new-task")}
+        onClick={() => navigate("/task/new-task")}
         className="btn-primary w-full mb-4"
       >
         Create New Task

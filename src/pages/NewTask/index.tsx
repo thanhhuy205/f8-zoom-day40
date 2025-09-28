@@ -22,7 +22,7 @@ const NewTask = () => {
       );
 
       if (success) {
-        navigate("/", { replace: true });
+        navigate("/task", { replace: true });
       } else {
         setErr(true);
       }
